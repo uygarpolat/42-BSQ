@@ -28,7 +28,7 @@ def calculate_highest(tally):
     sorted_data = sorted(max_keys, key=lambda x: (x[0], x[1]))
     return sorted_data[0], tally[sorted_data[0]]
     
-def free_of_dots(grid, old_loc, obstacle, offset):
+def free_of_obstacles(grid, old_loc, obstacle, offset):
     side = offset + 1
     rows = side
     cols = side
@@ -49,7 +49,7 @@ def calculate_two_lengths(grid, old_loc, obstacle, offset):
     if not is_in_grid(grid, new_loc_vert) or grid[new_loc_vert[0]][new_loc_vert[1]] == obstacle:
         return 0
 
-    if free_of_dots(grid, old_loc, obstacle, offset):
+    if free_of_obstacles(grid, old_loc, obstacle, offset):
         length += 1 + calculate_two_lengths(grid, old_loc, obstacle, offset + 1)
     return length
 
